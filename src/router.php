@@ -6,7 +6,7 @@ declare(strict_types=1);
 use Yiisoft\Router\UrlGeneratorInterface;
 
 function route(
-    string $route,
+    string $name,
     array $parameters = [],
     array $query = [],
 ): string {
@@ -14,6 +14,6 @@ function route(
      * @var UrlGeneratorInterface $urlGenerator
      */
     $urlGenerator = container(UrlGeneratorInterface::class);
-    return $urlGenerator->generate($route, $parameters, $query);
+    return $urlGenerator->generate($name, $parameters, $query);
 }
 

@@ -1,0 +1,77 @@
+# Yii Short
+
+Sets of helper functions for rapid development of Yii 3 applications.
+
+[![Latest Stable Version](https://poser.pugx.org/xepozz/yii-short/v/stable.svg)](https://packagist.org/packages/xepozz/yii-short)
+[![Total Downloads](https://poser.pugx.org/xepozz/yii-short/downloads.svg)](https://packagist.org/packages/xepozz/yii-short)
+[![phpunit](https://github.com/xepozz/yii-short/workflows/PHPUnit/badge.svg)](https://github.com/xepozz/yii-short/actions)
+[![codecov](https://codecov.io/gh/xepozz/yii-short/branch/master/graph/badge.svg?token=UREXAOUHTJ)](https://codecov.io/gh/xepozz/yii-short)
+[![type-coverage](https://shepherd.dev/github/xepozz/yii-short/coverage.svg)](https://shepherd.dev/github/xepozz/yii-short)
+
+## Installation
+
+```bash
+composer require xepozz/yii-short
+```
+
+## Shortcuts
+
+### `container(string $id, bool $optional = false): mixed`
+
+- `$id` is a container id
+- `$optional` is a flag to return `null` if the `$id` is not found in the container
+
+```php
+container(\App\MyService::class); // => \App\MyService instance
+container('not-exist'); // => throws \Psr\Container\NotFoundExceptionInterface
+container('not-exist', true); // => null
+```
+
+
+### `route(string $name, array $params = [], array $query = []): string`
+
+- `$name` is a route name
+- `$params` is a route params
+- `$query` is a query params
+
+```php
+route('site/index'); // => '/index'
+route('user/view', ['id' => 1]); // => '/user/1'
+route('site/index', [], ['page' => 2]); // => '/index?page=2'
+```
+
+### `view(string $view, array $params = [], ?object $controller = null): \Yiisoft\DataResponse\DataResponse`
+
+- `$view` is a view name
+- `$params` is a view params
+- `$controller` is a controller instance. Used to bind views to the specific directory called by the controller name.
+
+```php
+view('site/index'); // => A response object with content of file '/views/site/index.php'
+view('site/index', ['page' => 2]); // => A response object with content of file '/views/site/index.php' and params ['page' => 2]
+view('index', ['page' => 2], new MyController()); // => A response object with content of file '/views/my/index.php' and params ['page' => 2]
+
+class SiteController 
+{
+    public function actionIndex()
+    {
+        return view('index', [], $this);  // => A response object with content of file '/views/site/index.php'
+    }
+}
+```
+
+### `response(int|null|string|array|StreamInterface $body, int $code = 200, string $status = 'OK', array $headers = []): \Psr\Http\Message\ResponseInterface`
+
+- `$body` is a response body
+- `$code` is a response code
+- `$status` is a response status
+- `$headers` is a response headers
+
+```php
+response('Hello world'); // => A response object with body 'Hello world'
+response('Hello world', 201); // => A response object with body 'Hello world' and code 201
+response('Hello world', 201, 'Created'); // => A response object with body 'Hello world', code 201 and status 'Created'
+response('Hello world', 201, 'Created', ['X-My-Header' => 'My value']); // => A response object with body 'Hello world', code 201, status 'Created' and header 'X-My-Header' with value 'My value'
+
+response(['message' => 'Hello world']); // => A response object with body '{"message":"Hello world"}' and header 'Content-Type' with value 'application/json'
+```
