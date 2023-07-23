@@ -15,7 +15,7 @@ use Yiisoft\Test\Support\Container\SimpleContainer;
 
 class RouterTest extends FunctionsTestCase
 {
-    public function testContainer()
+    public function testFunctionLoaded()
     {
         $this->assertTrue(function_exists('route'));
     }

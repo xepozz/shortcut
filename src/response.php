@@ -7,6 +7,8 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 use Yiisoft\DataResponse\DataResponseFactoryInterface;
+use Yiisoft\Http\Header;
+use Yiisoft\Http\Status;
 
 function response(
     int|null|string|array|StreamInterface $body,
@@ -46,5 +48,39 @@ function response(
         }
     }
     return $response;
+}
+
+
+function redirect(
+    string $name,
+    array $parameters = [],
+    array $query = [],
+    int $code = Status::TEMPORARY_REDIRECT,
+    bool $absolute = false
+): ResponseInterface {
+    /**
+     * @var ResponseFactoryInterface $responseFactory
+     */
+    $responseFactory = container(ResponseFactoryInterface::class);
+
+    if ($absolute) {
+        if ($query) {
+            $url = sprintf('%s?%s', $name, http_build_query($query));
+        } else {
+            $url = $name;
+        }
+    } else {
+        $url = route($name, $parameters, $query);
+    }
+
+    return $responseFactory
+        ->createResponse(
+            $code,
+            Status::TEXTS[$code] ?? Status::TEXTS[Status::TEMPORARY_REDIRECT]
+        )
+        ->withHeader(
+            Header::LOCATION,
+            $url
+        );
 }
 

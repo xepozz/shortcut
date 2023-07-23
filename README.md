@@ -75,3 +75,22 @@ response('Hello world', 201, 'Created', ['X-My-Header' => 'My value']); // => A 
 
 response(['message' => 'Hello world']); // => A response object with body '{"message":"Hello world"}' and header 'Content-Type' with value 'application/json'
 ```
+
+### `redirect(string $name, array $parameters = [], array $query = [], int $code = Status::TEMPORARY_REDIRECT, bool $absolute = false): \Psr\Http\Message\ResponseInterface`
+
+- `$name` is a route name or an absolute url if `$absolute` is `true`
+- `$parameters` is a route parameters. Used only if `$absolute` is `false`
+- `$query` is a query parameters
+- `$code` is a response code
+- `$absolute` is a flag to generate absolute url, default is `false`
+
+```php
+// Route name 'site/index' is bound to '/index'
+redirect('site/index'); // => A response object with code 307 and header 'Location' with value '/index'
+redirect('site/index', ['page' => 2]); // => A response object with code 307 and header 'Location' with value '/index/2'
+redirect('site/index', [], ['page' => 2]); // => A response object with code 307 and header 'Location' with value '/index?page=2'
+redirect('site/index', [], ['page' => 2], Status::PERMANENT_REDIRECT); // => A response object with code 308 and header 'Location' with value '/index?page=2'
+
+// Generating absolute url
+redirect('/path/to/redirect', [], ['page' => 2], Status::PERMANENT_REDIRECT, true); // => A response object with code 308 and header 'Location' with value 'http://localhost/path/to/redirect?page=2'
+```

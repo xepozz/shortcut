@@ -9,7 +9,7 @@ use Yiisoft\Test\Support\Container\SimpleContainer;
 
 class ContainerTest extends FunctionsTestCase
 {
-    public function testContainer()
+    public function testFunctionLoaded()
     {
         $this->assertTrue(function_exists('container'));
     }
