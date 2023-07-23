@@ -11,7 +11,8 @@
         "yiisoft/yii-view": "^6.0",
         "httpsoft/http-message": "^1.1",
         "yiisoft/router": "^3.0",
-        "yiisoft/router-fastroute": "^3.0"
+        "yiisoft/router-fastroute": "^3.0",
+        "vimeo/psalm": "^5.13"
     },
     "provide": {
         "psr/event-dispatcher-implementation": "1.0.0",
