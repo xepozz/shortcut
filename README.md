@@ -8,10 +8,15 @@ Sets of helper functions for rapid development of Yii 3 applications.
 [![codecov](https://codecov.io/gh/xepozz/shortcut/branch/master/graph/badge.svg?token=UREXAOUHTJ)](https://codecov.io/gh/xepozz/shortcut)
 [![type-coverage](https://shepherd.dev/github/xepozz/shortcut/coverage.svg)](https://shepherd.dev/github/xepozz/shortcut)
 
+## About
+
+The library provides a set of helper functions for rapid development of Yii 3 applications.
+
+
 ## Installation
 
 ```bash
-composer require xepozz/shortcut
+composer req xepozz/shortcut
 ```
 
 ## Shortcuts
@@ -125,3 +130,13 @@ t('error.message', ['message' => 'Something went wrong']); // => 'Error: "Someth
 t('error.message', ['message' => 'Something went wrong'], 'modules'); // => 'Error from a module: "Something went wrong".'
 t('error.message', ['message' => 'Something went wrong'], 'modules', 'ru'); // => 'Ошибка из модуля: "Something went wrong".'
 ```
+
+
+## Looking for more modules?
+
+- [Unique ID](https://github.com/xepozz/unique-id) - Allows you to track the unique user in the application.
+- [Request ID](https://github.com/xepozz/request-id) - A simple library to generate both unique request and response IDs for tracing purposes.
+- [AB](https://github.com/xepozz/ab) - A simple library to enable A/B testing based on a set of rules.
+- [Feature Flag](https://github.com/xepozz/feature-flag) - A simple library to enable/disable features based on a set of rules.
+
+ 
