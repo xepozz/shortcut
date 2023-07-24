@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Xepozz\YiiShort\Tests;
+namespace Xepozz\Shortcut\Tests;
 
-use Xepozz\YiiShort\State;
+use Xepozz\Shortcut\State;
 use Yiisoft\Router\FastRoute\UrlGenerator;
 use Yiisoft\Router\Route;
 use Yiisoft\Router\RouteCollection;

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Xepozz\YiiShort\Tests;
+namespace Xepozz\Shortcut\Tests;
 
 use HttpSoft\Message\ResponseFactory;
 use HttpSoft\Message\Stream;
 use PHPUnit\Framework\Attributes\DataProvider;
 use Psr\Http\Message\ResponseFactoryInterface;
-use Xepozz\YiiShort\State;
+use Xepozz\Shortcut\State;
 use Yiisoft\Http\Header;
 use Yiisoft\Http\Status;
 use Yiisoft\Router\FastRoute\UrlGenerator;

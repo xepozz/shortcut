@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Xepozz\YiiShort\Tests;
+namespace Xepozz\Shortcut\Tests;
 
 use HttpSoft\Message\ResponseFactory;
 use HttpSoft\Message\StreamFactory;
 use Psr\Http\Message\StreamInterface;
-use Xepozz\YiiShort\State;
-use Xepozz\YiiShort\Tests\Support\IndexController;
+use Xepozz\Shortcut\State;
+use Xepozz\Shortcut\Tests\Support\IndexController;
 use Yiisoft\Aliases\Aliases;
 use Yiisoft\DataResponse\DataResponseFactory;
 use Yiisoft\Test\Support\Container\SimpleContainer;

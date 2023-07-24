@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xepozz\YiiShort;
+namespace Xepozz\Shortcut;
 
 use Psr\Container\ContainerInterface;
 

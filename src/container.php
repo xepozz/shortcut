@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Xepozz\YiiShort\State;
+use Xepozz\Shortcut\State;
 
 
 /**

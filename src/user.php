@@ -1,12 +1,20 @@
 <?php
 
-use Psr\Http\Message\ResponseFactoryInterface;
-use Psr\Http\Message\StreamInterface;
-use Xepozz\YiiShort\State;
+declare(strict_types=1);
+
 use Yiisoft\Access\AccessCheckerInterface;
-use Yiisoft\DataResponse\DataResponseFactoryInterface;
+use Yiisoft\Auth\IdentityInterface;
 use Yiisoft\User\CurrentUser;
-use Yiisoft\Yii\View\ViewRenderer;
+
+function user(): CurrentUser
+{
+    /**
+     * @var CurrentUser $user
+     */
+    $user = container(CurrentUser::class);
+
+    return $user;
+}
 
 function can(
     string $permission,
@@ -14,15 +22,16 @@ function can(
     ?int $userId = null
 ): bool {
     if ($userId === null) {
-        /**
-         * @var CurrentUser $user
-         */
-        $user = container(CurrentUser::class);
-        return $user->can($permission, $parameters);
+        return user()->can($permission, $parameters);
     }
     /**
      * @var AccessCheckerInterface $accessChecker
      */
     $accessChecker = container(AccessCheckerInterface::class);
     return $accessChecker->userHasPermission($userId, $permission, $parameters);
+}
+
+function identity(): IdentityInterface
+{
+    return user()->getIdentity();
 }

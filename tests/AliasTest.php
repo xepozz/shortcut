@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Xepozz\YiiShort\Tests;
+namespace Xepozz\Shortcut\Tests;
 
-use Xepozz\YiiShort\State;
+use Xepozz\Shortcut\State;
 use Yiisoft\Aliases\Aliases;
 use Yiisoft\Test\Support\Container\SimpleContainer;
 

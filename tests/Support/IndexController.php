@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xepozz\YiiShort\Tests\Support;
+namespace Xepozz\Shortcut\Tests\Support;
 
 class IndexController
 {

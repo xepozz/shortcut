@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xepozz\YiiShort\Tests;
+namespace Xepozz\Shortcut\Tests;
 
 use PHPUnit\Framework\TestCase;
 

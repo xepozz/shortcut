@@ -1,17 +1,17 @@
-# Yii Short
+# Shortcut
 
 Sets of helper functions for rapid development of Yii 3 applications.
 
-[![Latest Stable Version](https://poser.pugx.org/xepozz/yii-short/v/stable.svg)](https://packagist.org/packages/xepozz/yii-short)
-[![Total Downloads](https://poser.pugx.org/xepozz/yii-short/downloads.svg)](https://packagist.org/packages/xepozz/yii-short)
-[![phpunit](https://github.com/xepozz/yii-short/workflows/PHPUnit/badge.svg)](https://github.com/xepozz/yii-short/actions)
-[![codecov](https://codecov.io/gh/xepozz/yii-short/branch/master/graph/badge.svg?token=UREXAOUHTJ)](https://codecov.io/gh/xepozz/yii-short)
-[![type-coverage](https://shepherd.dev/github/xepozz/yii-short/coverage.svg)](https://shepherd.dev/github/xepozz/yii-short)
+[![Latest Stable Version](https://poser.pugx.org/xepozz/shortcut/v/stable.svg)](https://packagist.org/packages/xepozz/shortcut)
+[![Total Downloads](https://poser.pugx.org/xepozz/shortcut/downloads.svg)](https://packagist.org/packages/xepozz/shortcut)
+[![phpunit](https://github.com/xepozz/shortcut/workflows/PHPUnit/badge.svg)](https://github.com/xepozz/shortcut/actions)
+[![codecov](https://codecov.io/gh/xepozz/shortcut/branch/master/graph/badge.svg?token=UREXAOUHTJ)](https://codecov.io/gh/xepozz/shortcut)
+[![type-coverage](https://shepherd.dev/github/xepozz/shortcut/coverage.svg)](https://shepherd.dev/github/xepozz/shortcut)
 
 ## Installation
 
 ```bash
-composer require xepozz/yii-short
+composer require xepozz/shortcut
 ```
 
 ## Shortcuts
