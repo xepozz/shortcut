@@ -8,14 +8,16 @@ use Yiisoft\Yii\View\ViewRenderer;
 function view(
     string $view,
     array $parameters = [],
-    ?object $controller = null
+    null|string|object $controller = null
 ): DataResponse {
     /**
      * @var ViewRenderer $renderer
      */
     $renderer = container(ViewRenderer::class);
-    if ($controller !== null) {
+    if (is_object($controller)) {
         $renderer = $renderer->withController($controller);
+    } elseif(is_string($controller)) {
+        $renderer = $renderer->withControllerName($controller);
     }
     return $renderer->render($view, $parameters);
 }

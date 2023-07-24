@@ -40,16 +40,17 @@ route('user/view', ['id' => 1]); // => '/user/1'
 route('site/index', [], ['page' => 2]); // => '/index?page=2'
 ```
 
-### `view(string $view, array $params = [], ?object $controller = null): \Yiisoft\DataResponse\DataResponse`
+### `view(string $view, array $params = [], null|string|object $controller = null): \Yiisoft\DataResponse\DataResponse`
 
 - `$view` is a view name
 - `$params` is a view params
-- `$controller` is a controller instance. Used to bind views to the specific directory called by the controller name.
+- `$controller` is a controller instance or a path to views directory. Used to bind views to the specific directory.
 
 ```php
 view('site/index'); // => A response object with content of file '/views/site/index.php'
 view('site/index', ['page' => 2]); // => A response object with content of file '/views/site/index.php' and params ['page' => 2]
 view('index', ['page' => 2], new MyController()); // => A response object with content of file '/views/my/index.php' and params ['page' => 2]
+view('index', ['user' => $user], 'module/user'); // => A response object with content of file '/views/module/user/index.php' and params ['user' => $user]
 
 class SiteController 
 {
