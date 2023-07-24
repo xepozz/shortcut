@@ -94,3 +94,19 @@ redirect('site/index', [], ['page' => 2], Status::PERMANENT_REDIRECT); // => A r
 // Generating absolute url
 redirect('/path/to/redirect', [], ['page' => 2], Status::PERMANENT_REDIRECT, true); // => A response object with code 308 and header 'Location' with value 'http://localhost/path/to/redirect?page=2'
 ```
+
+### `alias(string $path): string`
+
+- `$path` is an alias name
+
+```php
+alias('@runtime'); // => '/path/to/runtime'
+```
+
+### `aliases(string ...$paths): array`
+
+- `$paths` is alias names
+
+```php
+aliases('@runtime', '@webroot'); // => ['/path/to/runtime', '/path/to/webroot']
+```
