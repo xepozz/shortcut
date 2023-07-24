@@ -111,3 +111,17 @@ alias('@runtime'); // => '/path/to/runtime'
 ```php
 aliases('@runtime', '@webroot'); // => ['/path/to/runtime', '/path/to/webroot']
 ```
+
+### `t(string $message, array $params = [], string $category = 'app', string $language = null): string`
+
+- `$message` is a translation message
+- `$params` is a translation params
+- `$category` is a translation category
+- `$language` is a translation language
+
+```php
+t('main.hello'); // => 'Hello world'
+t('error.message', ['message' => 'Something went wrong']); // => 'Error: "Something went wrong".'
+t('error.message', ['message' => 'Something went wrong'], 'modules'); // => 'Error from a module: "Something went wrong".'
+t('error.message', ['message' => 'Something went wrong'], 'modules', 'ru'); // => 'Ошибка из модуля: "Something went wrong".'
+```
