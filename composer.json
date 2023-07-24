@@ -14,7 +14,8 @@
     "yii-library",
     "yii-shortcut",
     "yii-helpers",
-    "shortcut"
+    "shortcut",
+    "rapid-development"
   ],
   "license": "MIT",
   "authors": [
