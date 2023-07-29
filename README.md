@@ -21,7 +21,34 @@ composer req xepozz/shortcut
 
 ## Shortcuts
 
-### `container(string $id, bool $optional = false): mixed`
+### Table of contents
+
+- [container](#item-container)
+  - Accessing the PSR-11 container 
+- [route](#item-route)
+  - Generating a route URL 
+- [view](#item-view)
+  - Rendering a view file to a response object
+- [response](#item-response)
+  - Creating a response object
+- [redirect](#item-redirect)
+  - Creating a redirect response object 
+- [alias](#item-alias)
+  - Getting an alias 
+- [aliases](#item-aliases)
+  - Getting multiple aliases at once 
+- [translate](#item-translate)
+  - Translating a message 
+- [validate](#item-validate)
+  - Validating a data 
+- [log](#item-log)
+  - Logging a message with PSR-3 logger 
+- [cache](#item-cache)
+  - Accessing the PSR-6 cache 
+
+### Functions
+<a id="item-container"></a>
+#### `container(string $id, bool $optional = false): mixed`
 
 - `$id` is a container id
 - `$optional` is a flag to return `null` if the `$id` is not found in the container
@@ -32,8 +59,8 @@ container('not-exist'); // => throws \Psr\Container\NotFoundExceptionInterface
 container('not-exist', true); // => null
 ```
 
-
-### `route(string $name, array $params = [], array $query = []): string`
+<a id="item-route"></a>
+#### `route(string $name, array $params = [], array $query = []): string`
 
 - `$name` is a route name
 - `$params` is a route params
@@ -45,7 +72,8 @@ route('user/view', ['id' => 1]); // => '/user/1'
 route('site/index', [], ['page' => 2]); // => '/index?page=2'
 ```
 
-### `view(string $view, array $params = [], null|string|object $controller = null): \Yiisoft\DataResponse\DataResponse`
+<a id="item-view"></a>
+#### `view(string $view, array $params = [], null|string|object $controller = null): \Yiisoft\DataResponse\DataResponse`
 
 - `$view` is a view name
 - `$params` is a view params
@@ -66,7 +94,8 @@ class SiteController
 }
 ```
 
-### `response(int|null|string|array|StreamInterface $body, int $code = 200, string $status = 'OK', array $headers = []): \Psr\Http\Message\ResponseInterface`
+<a id="item-response"></a>
+#### `response(int|null|string|array|StreamInterface $body = null, int $code = 200, string $status = 'OK', array $headers = []): \Psr\Http\Message\ResponseInterface`
 
 - `$body` is a response body
 - `$code` is a response code
@@ -82,7 +111,8 @@ response('Hello world', 201, 'Created', ['X-My-Header' => 'My value']); // => A 
 response(['message' => 'Hello world']); // => A response object with body '{"message":"Hello world"}' and header 'Content-Type' with value 'application/json'
 ```
 
-### `redirect(string $name, array $parameters = [], array $query = [], int $code = Status::TEMPORARY_REDIRECT, bool $absolute = false): \Psr\Http\Message\ResponseInterface`
+<a id="item-redirect"></a>
+#### `redirect(string $name, array $parameters = [], array $query = [], int $code = Status::TEMPORARY_REDIRECT, bool $absolute = false): \Psr\Http\Message\ResponseInterface`
 
 - `$name` is a route name or an absolute url if `$absolute` is `true`
 - `$parameters` is a route parameters. Used only if `$absolute` is `false`
@@ -101,7 +131,8 @@ redirect('site/index', [], ['page' => 2], Status::PERMANENT_REDIRECT); // => A r
 redirect('/path/to/redirect', [], ['page' => 2], Status::PERMANENT_REDIRECT, true); // => A response object with code 308 and header 'Location' with value 'http://localhost/path/to/redirect?page=2'
 ```
 
-### `alias(string $path): string`
+<a id="item-alias"></a>
+#### `alias(string $path): string`
 
 - `$path` is an alias name
 
@@ -109,7 +140,8 @@ redirect('/path/to/redirect', [], ['page' => 2], Status::PERMANENT_REDIRECT, tru
 alias('@runtime'); // => '/path/to/runtime'
 ```
 
-### `aliases(string ...$paths): array`
+<a id="item-aliases"></a>
+#### `aliases(string ...$paths): array`
 
 - `$paths` is alias names
 
@@ -117,7 +149,8 @@ alias('@runtime'); // => '/path/to/runtime'
 aliases('@runtime', '@webroot'); // => ['/path/to/runtime', '/path/to/webroot']
 ```
 
-### `t(string $message, array $params = [], string $category = 'app', string $language = null): string`
+<a id="item-translate"></a>
+#### `translate(string $message, array $params = [], string $category = 'app', string $language = null): string`
 
 - `$message` is a translation message
 - `$params` is a translation params
@@ -125,13 +158,14 @@ aliases('@runtime', '@webroot'); // => ['/path/to/runtime', '/path/to/webroot']
 - `$language` is a translation language
 
 ```php
-t('main.hello'); // => 'Hello world'
-t('error.message', ['message' => 'Something went wrong']); // => 'Error: "Something went wrong".'
-t('error.message', ['message' => 'Something went wrong'], 'modules'); // => 'Error from a module: "Something went wrong".'
-t('error.message', ['message' => 'Something went wrong'], 'modules', 'ru'); // => 'Ошибка из модуля: "Something went wrong".'
+translate('main.hello'); // => 'Hello world'
+translate('error.message', ['message' => 'Something went wrong']); // => 'Error: "Something went wrong".'
+translate('error.message', ['message' => 'Something went wrong'], 'modules'); // => 'Error from a module: "Something went wrong".'
+translate('error.message', ['message' => 'Something went wrong'], 'modules', 'ru'); // => 'Ошибка из модуля: "Something went wrong".'
 ```
 
-### `validate(mixed $data, callable|iterable|object|string|null $rules = null, ?ValidationContext $context = null): Result`
+<a id="item-validate"></a>
+#### `validate(mixed $data, callable|iterable|object|string|null $rules = null, ?ValidationContext $context = null): Result`
 
 - `$data` is a data to validate
 - `$rules` is a validation rules
@@ -146,7 +180,8 @@ validate(
 
 See more about validator rules in [yiisoft/validator](https://github.com/yiisoft/validator)
 
-### `log_message(string $level, string|stringable $message, array $context = []): void`
+<a id="item-log"></a>
+#### `log_message(string $level, string|stringable $message, array $context = []): void`
 
 - `$level` is a log level. Available levels: `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info`, `debug`.
   - You can use `\Psr\Log\LogLevel` constants: 
@@ -185,7 +220,8 @@ log_alert('Alert message');
 log_emergency('Emergency message');
 ```
 
-### `cache(string|int|Stringable|array $key, mixed $value = null, int|DateInterval|null $ttl = null): mixed`
+<a id="item-cache"></a>
+#### `cache(string|int|Stringable|array $key, mixed $value = null, int|DateInterval|null $ttl = null): mixed`
 
 - `$key` is a cache key
 - `$value` is a cache value
@@ -210,5 +246,3 @@ cache(['key' => 'value', '!@#$%^&*()_+`' => '_)(*&^%$#@!~`'], fn () => 'value');
 - [Request ID](https://github.com/xepozz/request-id) - A simple library to generate both unique request and response IDs for tracing purposes.
 - [AB](https://github.com/xepozz/ab) - A simple library to enable A/B testing based on a set of rules.
 - [Feature Flag](https://github.com/xepozz/feature-flag) - A simple library to enable/disable features based on a set of rules.
-
- 

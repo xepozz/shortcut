@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Yiisoft\Translator\TranslatorInterface;
 
-function t(
+function translate(
     string $message,
     array $parameters = [],
     string $category = 'app',

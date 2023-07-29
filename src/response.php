@@ -11,7 +11,7 @@ use Yiisoft\Http\Header;
 use Yiisoft\Http\Status;
 
 function response(
-    int|null|string|array|StreamInterface $body,
+    int|null|string|array|StreamInterface $body = null,
     int $code = 200,
     string $status = 'OK',
     array $headers = []
