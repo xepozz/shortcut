@@ -47,28 +47,28 @@ final class LoggerTest extends FunctionsTestCase
     public static function dataLogFunctions(): iterable
     {
         yield 'log_error' => ['log_error', 'message', []];
-        yield 'log_error' => ['log_error', new StringableClass('message'), ['key' => 'value']];
+        yield 'log_error stringable' => ['log_error', new StringableClass('message'), ['key' => 'value']];
 
         yield 'log_info' => ['log_info', 'message', []];
-        yield 'log_info' => ['log_info', new StringableClass('message'), ['key' => 'value']];
+        yield 'log_info stringable' => ['log_info', new StringableClass('message'), ['key' => 'value']];
 
         yield 'log_warning' => ['log_warning', 'message', []];
-        yield 'log_warning' => ['log_warning', new StringableClass('message'), ['key' => 'value']];
+        yield 'log_warning stringable' => ['log_warning', new StringableClass('message'), ['key' => 'value']];
 
         yield 'log_debug' => ['log_debug', 'message', []];
-        yield 'log_debug' => ['log_debug', new StringableClass('message'), ['key' => 'value']];
+        yield 'log_debug stringable' => ['log_debug', new StringableClass('message'), ['key' => 'value']];
 
         yield 'log_notice' => ['log_notice', 'message', []];
-        yield 'log_notice' => ['log_notice', new StringableClass('message'), ['key' => 'value']];
+        yield 'log_notice stringable' => ['log_notice', new StringableClass('message'), ['key' => 'value']];
 
         yield 'log_alert' => ['log_alert', 'message', []];
-        yield 'log_alert' => ['log_alert', new StringableClass('message'), ['key' => 'value']];
+        yield 'log_alert stringable' => ['log_alert', new StringableClass('message'), ['key' => 'value']];
 
         yield 'log_critical' => ['log_critical', 'message', []];
-        yield 'log_critical' => ['log_critical', new StringableClass('message'), ['key' => 'value']];
+        yield 'log_critical stringable' => ['log_critical', new StringableClass('message'), ['key' => 'value']];
 
         yield 'log_emergency' => ['log_emergency', 'message', []];
-        yield 'log_emergency' => ['log_emergency', new StringableClass('message'), ['key' => 'value']];
+        yield 'log_emergency stringable' => ['log_emergency', new StringableClass('message'), ['key' => 'value']];
     }
 
     public function bootstrapFiles(): iterable

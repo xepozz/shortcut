@@ -146,7 +146,7 @@ validate(
 
 See more about validator rules in [yiisoft/validator](https://github.com/yiisoft/validator)
 
-### `log_message(string $level, string|stringable $message, array $context = []): void
+### `log_message(string $level, string|stringable $message, array $context = []): void`
 
 - `$level` is a log level. Available levels: `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info`, `debug`.
   - You can use `\Psr\Log\LogLevel` constants: 
@@ -183,6 +183,25 @@ log_debug('Debug message');
 log_critical('Critical message');
 log_alert('Alert message');
 log_emergency('Emergency message');
+```
+
+### `cache(string|int|Stringable|array $key, mixed $value = null, int|DateInterval|null $ttl = null): mixed`
+
+- `$key` is a cache key
+- `$value` is a cache value
+- `$ttl` is a cache TTL
+
+```php
+cache('key', 'value'); // returns "value" and sets cache with key "key" if it does not exist
+
+cache('key', 'value', 3600); // sets cache with key "key" and value "value" for 1 hour
+cache('key', 'value', new DateInterval('PT1H')); // also TTL can be an instance of DateInterval
+
+cache('key', fn () => 'value'); // $value can be a closure. It will be executed only if cache with key "key" does not exist
+
+cache(new StringableClass('key'), fn () => 'value'); // $key can be an instance of Stringable
+cache(12345, fn () => 'value'); // $key can be an integer
+cache(['key' => 'value', '!@#$%^&*()_+`' => '_)(*&^%$#@!~`'], fn () => 'value'); // $key can be an array. It will be serialized to a JSON and the following characters will be replaced to "_": {}()/\@:
 ```
 
 ## Looking for more modules?

@@ -40,7 +40,9 @@
     "yiisoft/translator": "^3.0",
     "yiisoft/user": "^2.0",
     "yiisoft/access": "^1.1",
-    "yiisoft/validator": "^1.1"
+    "yiisoft/validator": "^1.1",
+    "yiisoft/cache": "^3.0",
+    "psr/simple-cache": "^3.0"
   },
   "provide": {
     "psr/event-dispatcher-implementation": "1.0.0",
