@@ -146,6 +146,44 @@ validate(
 
 See more about validator rules in [yiisoft/validator](https://github.com/yiisoft/validator)
 
+### `log_message(string $level, string|stringable $message, array $context = []): void
+
+- `$level` is a log level. Available levels: `emergency`, `alert`, `critical`, `error`, `warning`, `notice`, `info`, `debug`.
+  - You can use `\Psr\Log\LogLevel` constants: 
+    - `\Psr\Log\LogLevel::EMERGENCY`
+    - `\Psr\Log\LogLevel::ALERT`
+    - `\Psr\Log\LogLevel::CRITICAL`
+    - `\Psr\Log\LogLevel::ERROR`
+    - `\Psr\Log\LogLevel::WARNING`
+    - `\Psr\Log\LogLevel::NOTICE`
+    - `\Psr\Log\LogLevel::INFO`
+    - `\Psr\Log\LogLevel::DEBUG`.
+- `$message` is a log message
+- `$context` is a log context
+
+Also, you can use already level-specific functions:
+- `log_emergency(string|Stringable $message, array $context = []): void`
+- `log_alert(string|Stringable $message, array $context = []): void`
+- `log_critical(string|Stringable $message, array $context = []): void`
+- `log_error(string|Stringable $message, array $context = []): void`
+- `log_warning(string|Stringable $message, array $context = []): void`
+- `log_notice(string|Stringable $message, array $context = []): void`
+- `log_info(string|Stringable $message, array $context = []): void`
+- `log_debug(string|Stringable $message, array $context = []): void`
+
+```php
+log_message('info', 'Some info message');
+log_message('error', 'Could not authenticate user with ID {user_id}', ['user_id' => $userId]);
+
+log_info('Info message');
+log_error('Error message');
+log_warning('Warning message');
+log_notice('Notice message');
+log_debug('Debug message');
+log_critical('Critical message');
+log_alert('Alert message');
+log_emergency('Emergency message');
+```
 
 ## Looking for more modules?
 
