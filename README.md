@@ -131,6 +131,21 @@ t('error.message', ['message' => 'Something went wrong'], 'modules'); // => 'Err
 t('error.message', ['message' => 'Something went wrong'], 'modules', 'ru'); // => 'Ошибка из модуля: "Something went wrong".'
 ```
 
+### `validate(mixed $data, callable|iterable|object|string|null $rules = null, ?ValidationContext $context = null): Result`
+
+- `$data` is a data to validate
+- `$rules` is a validation rules
+- `$context` is a validation context
+
+```php
+validate(
+    ['name' => 'John'],
+    ['name' => [new Required()]],
+);
+```
+
+See more about validator rules in [yiisoft/validator](https://github.com/yiisoft/validator)
+
 
 ## Looking for more modules?
 

@@ -39,7 +39,8 @@
     "vimeo/psalm": "^5.13",
     "yiisoft/translator": "^3.0",
     "yiisoft/user": "^2.0",
-    "yiisoft/access": "^1.1"
+    "yiisoft/access": "^1.1",
+    "yiisoft/validator": "^1.1"
   },
   "provide": {
     "psr/event-dispatcher-implementation": "1.0.0",
